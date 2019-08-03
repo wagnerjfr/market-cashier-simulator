@@ -20,6 +20,6 @@ $ mvn package
 $ java -jar target/cashier-simulator-1.0-SNAPSHOT.jar
 ```
 ### Application running
-It shows the cashiers in the middle of the images, the clients in line waiting for an available cashier and a summary of transactions in the top of the screen.
+The picture below shows the cashiers in the middle of the images, the clients in line waiting for an available cashier and a summary of transactions in the top of the screen.
 
 ![alt text](https://github.com/wagnerjfr/market-cashier-simulator/blob/master/img/figure.png)
