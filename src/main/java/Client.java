@@ -1,6 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,12 +8,8 @@ import java.util.Random;
 
 public class Client extends JPanel {
 
-    private int number;
-    private List<Double> products = new ArrayList<>();
-    private final int MAX_ITEMS = 20;
-    private final int MIN_ITEMS = 1;
-    private final double MAX_VALUE = 20;
-    private final double MIN_VALUE = 0.05;
+    private final int number;
+    private final List<Double> products = new ArrayList<>();
 
     public Client(int number) {
         this.number = number;
@@ -33,6 +29,10 @@ public class Client extends JPanel {
 
     private void createListOfProducts() {
         Random rand = new Random();
+        int MAX_ITEMS = 20;
+        int MIN_ITEMS = 1;
+        double MAX_VALUE = 20;
+        double MIN_VALUE = 0.05;
         int random = rand.nextInt((MAX_ITEMS - MIN_ITEMS) + 1) + MIN_ITEMS;
 
         for (int i = 0; i < random; i++) {
@@ -53,11 +53,9 @@ public class Client extends JPanel {
     private void setColor(int size) {
         if (size < 8) {
             setBackground(Color.gray);
-        }
-        else if (size >= 8 && size < 15) {
+        } else if (size < 15) {
             setBackground(Color.darkGray);
-        }
-        else {
+        } else {
             setBackground(Color.black);
         }
         updateUI();

@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class ClientQueue extends JPanel implements Runnable {
 
-    private Queue<Client> clients = new LinkedList<>();
+    private final Queue<Client> clients = new LinkedList<>();
     private int clientNumber = 10;
 
     public ClientQueue() {

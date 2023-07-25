@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
 
         ClientQueue queue = new ClientQueue();
         new Thread(queue).start();
