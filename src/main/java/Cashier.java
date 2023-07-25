@@ -8,10 +8,12 @@ public class Cashier extends JPanel implements Runnable {
 
     private double money = 0;
     private Client client = null;
-    private ClientQueue queue;
-    private Summary summary;
-    private JLabel jLabelMoney, jLabelClient, jLableNumItem;
-    private NumberFormat defaultFormat;
+    private final ClientQueue queue;
+    private final Summary summary;
+    private final JLabel jLabelMoney;
+    private final JLabel jLabelClient;
+    private final JLabel jLableNumItem;
+    private final NumberFormat defaultFormat;
     private final String NO_CLIENT = "Client ?";
     private final String NO_ITEM = "Item: 0";
 
