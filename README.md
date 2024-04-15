@@ -1,5 +1,3 @@
-# market-cashier-simulator
-
 # Supermarket Cashier Simulation in Java
 ## Learn about Concurrent Processing, Queues, Threads, and Swing GUI
 
