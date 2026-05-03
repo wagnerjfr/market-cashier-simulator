@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,17 +15,22 @@ public class Client extends JPanel {
     public Client(int number) {
         this.number = number;
         createListOfProducts();
+        try {
+            SwingUtilities.invokeAndWait(() -> {
+                setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+                setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(new EmptyBorder(5, 5, 5, 5));
+                JLabel clientNumber = new JLabel("Client " + number);
+                clientNumber.setForeground(Color.YELLOW);
+                add(clientNumber);
 
-        JLabel clientNumber = new JLabel("Client " + number);
-        clientNumber.setForeground(Color.YELLOW);
-        add(clientNumber);
-
-        JLabel numberOfItems = new JLabel("items: " + products.size());
-        numberOfItems.setForeground(Color.white);
-        add(numberOfItems);
+                JLabel numberOfItems = new JLabel("items: " + products.size());
+                numberOfItems.setForeground(Color.white);
+                add(numberOfItems);
+            });
+        } catch (InterruptedException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 
     private void createListOfProducts() {
@@ -51,13 +57,15 @@ public class Client extends JPanel {
     }
 
     private void setColor(int size) {
-        if (size < 8) {
-            setBackground(Color.gray);
-        } else if (size < 15) {
-            setBackground(Color.darkGray);
-        } else {
-            setBackground(Color.black);
-        }
-        updateUI();
+        SwingUtilities.invokeLater(() -> {
+            if (size < 8) {
+                setBackground(Color.gray);
+            } else if (size < 15) {
+                setBackground(Color.darkGray);
+            } else {
+                setBackground(Color.black);
+            }
+            updateUI();
+        });
     }
 }

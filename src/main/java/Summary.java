@@ -34,10 +34,15 @@ public class Summary extends JPanel {
 
     public synchronized void setOperation(double value) {
         numClients++;
-        total+=value;
-        jLabelTotal.setText(TOTAL + defaultFormat.format(total));
-        jLabelAverage.setText(AVERAGE + defaultFormat.format(total/numClients));
-        jLabelNumClients.setText(CLIENTS + numClients);
-        updateUI();
+        total += value;
+        int currentClients = numClients;
+        double currentTotal = total;
+        double average = currentTotal / currentClients;
+        SwingUtilities.invokeLater(() -> {
+            jLabelTotal.setText(TOTAL + defaultFormat.format(currentTotal));
+            jLabelAverage.setText(AVERAGE + defaultFormat.format(average));
+            jLabelNumClients.setText(CLIENTS + currentClients);
+            updateUI();
+        });
     }
 }

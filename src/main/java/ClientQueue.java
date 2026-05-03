@@ -30,23 +30,28 @@ public class ClientQueue extends JPanel implements Runnable {
         }
     }
 
-    private void addClient(int i) {
+    private synchronized void addClient(int i) {
         Client client = new Client(i);
         clients.add(client);
-        add(client);
-        updateUI();
+        SwingUtilities.invokeLater(() -> {
+            add(client);
+            updateUI();
+        });
+        notifyAll();
     }
 
-    private Client removeClient() {
+    private synchronized Client removeClient() {
         Client client = clients.remove();
-        remove(client);
-        updateUI();
+        SwingUtilities.invokeLater(() -> {
+            remove(client);
+            updateUI();
+        });
         return client;
     }
 
     public synchronized Client callClient() throws InterruptedException {
         while (clients.isEmpty()) {
-            Thread.sleep(900);
+            wait();
         }
         return removeClient();
     }

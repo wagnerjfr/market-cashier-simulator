@@ -6,6 +6,22 @@ Have you ever been to those supermarkets where a ‘thread pool’ of cashiers p
 
 ### ⭐ [Full Article on Medium](https://medium.com/javarevisited/supermarket-cashier-simulation-in-java-adf9af7b65ff)
 
+### Requirements
+- Java 17 or higher
+
+### How to Build and Run
+```bash
+# Clone the repository
+git clone https://github.com/wagnerjfr/market-cashier-simulator.git
+cd market-cashier-simulator
+
+# Build the JAR
+mvn clean package
+
+# Run the application
+java -jar target/cashier-simulator-1.0-SNAPSHOT.jar
+```
+
 ### Application running
 The picture below shows the cashiers in the middle of the images, the clients in line waiting for an available cashier and a summary of transactions in the top of the screen.
 
